@@ -1,4 +1,5 @@
-import * as SIcons from '@heroicons/react/solid';
+import * as SIcons from '@heroicons/react/solid/index';
+// import * as SIcons from 'react-icons/hi2'
 import React from 'react'
 
 function SolidIcons(props) {

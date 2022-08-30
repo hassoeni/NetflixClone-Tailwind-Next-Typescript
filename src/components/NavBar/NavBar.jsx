@@ -1,6 +1,6 @@
 import { useState, Fragment } from "react";
 import SolidIcons from "../Icons/SolidIcons";
-
+import { SearchIcon } from '@heroicons/react/solid'
 
 const navigation = [
     { id: 1, name: 'Homepagina', href: '#', current: true },
@@ -13,6 +13,13 @@ const navigation = [
 
 
 export default function NavBar() {
+    const [show, setShow] = useState(false)
+
+    const showInput = () => {
+        setShow(!show)
+    }
+
+
 
     return (
         <nav className="flex justify-between items-center py-4 mx-auto px-4 gap-2 bg-transparent fixed top-0 z-50 w-full">
@@ -25,12 +32,13 @@ export default function NavBar() {
                     <li key={navitems.id} className="delay-150 hover:text-slate-600 hover:transition-transform hover:scale-100 cursor-pointer ease-in-out font-semibold"><a href={navitems.href} current={navitems.current}>{navitems.name}</a></li>
                 ))}
             </ul>
-            <div className="flex gap-2">
-                <div>search</div>
-                <div className="group">
-                    bell
+            <div className="flex gap-2 items-center">
+                {(show ? <input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" /> : <></>)}
+                <div onClick={showInput} className="">
+                    <SolidIcons icon={"SearchIcon"} />
                 </div>
-                <div>Avatar</div>
+                <SolidIcons icon={"BellIcon"} />
+                <SolidIcons icon={"UserIcon"} />
             </div>
         </nav>
     );
