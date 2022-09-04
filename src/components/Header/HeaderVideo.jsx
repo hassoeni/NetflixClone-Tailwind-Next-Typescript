@@ -8,7 +8,7 @@ export default function HeaderVideo() {
             className="relative flex items-end justify-end sm:justify-start h-screen mb-12 overflow-hidden"
         >
             <div
-                className="relative z-30 p-5 text-2xl text-white ml-4 sm:mb-80 bg-opacity-50 rounded-xl h-auto text-center space-y-4"
+                className="relative z-30 p-5 text-2xl text-white ml-4 sm:mb-80 bg-opacity-50 rounded-xl h-auto text-center space-y-8"
             >
                 <h1 className="text-3xl sm:text-9xl">
                     Born Legacy 3

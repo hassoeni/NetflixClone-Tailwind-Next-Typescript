@@ -1,6 +1,7 @@
 import { useState, Fragment } from "react";
 import SolidIcons from "../Icons/SolidIcons";
 import { SearchIcon } from '@heroicons/react/solid'
+import { useSearch, useSearchDispatch } from "../../context/SearchContext";
 
 const navigation = [
     { id: 1, name: 'Homepagina', href: '#', current: true },
@@ -14,11 +15,21 @@ const navigation = [
 
 export default function NavBar() {
     const [show, setShow] = useState(false)
+    const dispatch = useSearchDispatch()
+    const searchState = useSearch()
+
 
     const showInput = () => {
         setShow(!show)
     }
 
+    const handleChange = (e) => {
+        dispatch({
+            type: 'searched',
+            field: e.target.name,
+            payload: e.target.value,
+        })
+    };
 
 
     return (
@@ -33,7 +44,7 @@ export default function NavBar() {
                 ))}
             </ul>
             <div className="flex gap-2 items-center">
-                {(show ? <input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" /> : <></>)}
+                {(show ? <input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" placeholder="search me" name="searchTerm" onChange={handleChange} value={searchState.searchTerm} /> : <></>)}
                 <div onClick={showInput} className="">
                     <SolidIcons icon={"SearchIcon"} />
                 </div>
