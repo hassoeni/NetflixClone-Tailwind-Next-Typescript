@@ -57,23 +57,23 @@ export default function Home({ data }) {
   // TODO Add search Context and Reducers. 
   const KEY = 'AIzaSyCBcL4D-cczyvr3WH8jgrPl5rtVcGhTymQ'
 
-
+  
   const searchData = async (text) => {
     setSearch(text)
     const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
       params: {
         part: 'snippet',
         q: search,
-        maxResults: 5,
+        maxResults: 15,
         key: KEY
       }
     })
     setVideo(response.data.items)
-  }
+  }  
 
   console.log('videoState', video)
-
-
+  
+  
   return (
     <div className="">
       <Head>
@@ -86,49 +86,8 @@ export default function Home({ data }) {
         <HeaderVideo />
         <SearchBar search={searchData} />
         Found: {video.length}
-        {video.map(movie => {
-          return (
-            <>
-              <img src={movie.image}
-                key={movie.id}
-                className="
-                                            snap-center
-                                            scroll-hidden
-                                            hover:z-50
-                                            sm:w-screen
-                                            sm:h-1/2
-                                            sm:mx-2 mx-3 hover:scale-110 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 inline-flex
-                                            transition transform-all active:scale-95 ease-in-out font-semibold items-center 
-                                            uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm "
-              />
-            </>
-            //TODO make videos appear same as rick and morty api, APPLY PLAY BUTTON.
-            // add the below code in this block and make sure u pass in video and not data. 
-            // <HorizontalList key={movie.id} data={movie} title="Comedy" />
-          )
-        })}
-        <HorizontalList data={data} title="Comedy" />
+        <HorizontalList data={video}/>
       </div>
     </div>
   )
 }
-
-{/* {data.filter((movieitem) =>
-                    movieitem.name.toLowerCase().includes(searchState.searchTerm)).map(movie => {
-                        return (
-                            <>
-                                <img src={movie.image}
-                                    key={movie.id}
-                                    className="
-                                            snap-center
-                                            scroll-hidden
-                                            hover:z-50
-                                            sm:w-screen
-                                            sm:h-1/2
-                                            sm:mx-2 mx-3 hover:scale-110 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 inline-flex
-                                            transition transform-all active:scale-95 ease-in-out font-semibold items-center 
-                                            uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm "
-                                />
-                            </>
-                        )
-                    })} */}

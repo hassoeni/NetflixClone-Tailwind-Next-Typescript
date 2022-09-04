@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 export default function SearchBar(props) {
+
 // input data 
 const [text, setText] = useState('')
 
@@ -19,7 +20,6 @@ const onTermSubmit =  (e) => {
               value={text}
               onChange={(e) => setText(e.target.value)}
           />
-          {/* Found: {videos.length} */}
       </form>
   )
 }
