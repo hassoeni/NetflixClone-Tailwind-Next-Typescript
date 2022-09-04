@@ -13,7 +13,7 @@ const navigation = [
 ]
 
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [show, setShow] = useState(false)
     const dispatch = useSearchDispatch()
     const searchState = useSearch()
@@ -31,6 +31,11 @@ export default function NavBar() {
         })
     };
 
+    const onTermSubmit = (e) => {
+        e.preventDefault()
+        props.search(searchState.searchTerm)
+    }
+
 
     return (
         <nav className="flex justify-between items-center py-4 mx-auto px-4 gap-2 bg-transparent fixed top-0 z-50 w-full">
@@ -44,7 +49,7 @@ export default function NavBar() {
                 ))}
             </ul>
             <div className="flex gap-2 items-center">
-                {(show ? <input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" placeholder="search me" name="searchTerm" onChange={handleChange} value={searchState.searchTerm} /> : <></>)}
+                {(show ? <form onSubmit={(e) => onTermSubmit(e)}><input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" placeholder="search me" name="searchTerm" onChange={handleChange} value={searchState.searchTerm} /></form> : <></>)}
                 <div onClick={showInput} className="">
                     <SolidIcons icon={"SearchIcon"} />
                 </div>

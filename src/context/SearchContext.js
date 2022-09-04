@@ -8,6 +8,7 @@ const SearchDispatchContext = createContext(null)
 const initialState = {
     searchTerm: ''
 }
+
 export function SearchProvider({ children }) {
     const [searchState, dispatch] = useReducer(searchReducer, initialState)
 

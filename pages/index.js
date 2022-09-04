@@ -7,7 +7,7 @@ import HorizontalList from '../src/components/HorizontalMovieList/HorizontalList
 import NavBar from '../src/components/NavBar/NavBar'
 import React, { useState } from 'react';
 import Youtube from './api/Youtube'
-import SearchBar from '../src/components/SearchBar'
+import SearchBar from '../Legacy/SearchBar'
 import axios from 'axios'
 
 const dummycarditems = [
@@ -19,6 +19,19 @@ const dummycarditems = [
   { id: 6, name: 'title six', href: '#', current: false, src: '' },
 ]
 
+
+// const searchData = async (text) => {
+//   setSearch(text)
+//   const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+//     params: {
+//       part: 'snippet',
+//       q: search,
+//       maxResults: 15,
+//       key: KEY
+//     }
+//   })
+//   setVideo(response.data.items)
+// }
 
 const defaultEndPoint = "https://rickandmortyapi.com/api/character/"
 export async function getServerSideProps() {
@@ -53,11 +66,9 @@ export default function Home({ data }) {
 
 
   // TODO add play and stopVideo to onMouseOver Events. 
-  // TODO Intergrate Youtube API 
-  // TODO Add search Context and Reducers. 
   const KEY = 'AIzaSyCBcL4D-cczyvr3WH8jgrPl5rtVcGhTymQ'
 
-  
+
   const searchData = async (text) => {
     setSearch(text)
     const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -69,11 +80,11 @@ export default function Home({ data }) {
       }
     })
     setVideo(response.data.items)
-  }  
+  }
 
   console.log('videoState', video)
-  
-  
+
+
   return (
     <div className="">
       <Head>
@@ -82,11 +93,10 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-black text-white">
-        <NavBar />
+        <NavBar search={searchData} />
         <HeaderVideo />
-        <SearchBar search={searchData} />
         Found: {video.length}
-        <HorizontalList data={video}/>
+        <HorizontalList data={video} />
       </div>
     </div>
   )

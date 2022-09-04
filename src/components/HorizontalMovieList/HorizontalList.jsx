@@ -16,6 +16,7 @@ export default function HorizontalList({ data, title }) {
                         console.log('MOVIE', movie)
                         return (
                             <>
+                            {/* TODO add initial search and lift searchbar up towards context */}
                                 <iframe src={videoSrc}
                                     key={movie.id}
                                     className="
@@ -27,6 +28,10 @@ export default function HorizontalList({ data, title }) {
                                             sm:mx-2 mx-3 hover:scale-110 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 inline-flex
                                             transition transform-all active:scale-95 ease-in-out font-semibold items-center 
                                             uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm "
+                                allowFullScreen
+                                autoPlay
+                                frameBorder="0"
+
                                 />
                             </>
                         )
