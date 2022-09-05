@@ -9,3 +9,19 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Movie { 
+  id Int @default(autoincrement()) @id
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  LikedCount   Int @default(autoincrement())
+  Liked Boolean 
+  Title   String @db.VarChar(255)
+  Description   String 
+  Category   String @db.VarChar(255)
+  viewed  Boolean
+  viewcount Int @default(0)
+  image String
+  url String
+  ReleaseYear DateTime @map(name:"release_year") 
+}
