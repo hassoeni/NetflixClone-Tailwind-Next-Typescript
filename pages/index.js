@@ -9,41 +9,33 @@ import React, { useState } from 'react';
 import Youtube from './api/Youtube'
 import SearchBar from '../Legacy/SearchBar'
 import axios from 'axios'
+import { PrismaClient } from "@prisma/client";
 
-const dummycarditems = [
-  { id: 1, name: 'title one', href: '#', current: true, src: '' },
-  { id: 2, name: 'title two', href: '#', current: false, src: '' },
-  { id: 3, name: 'title three', href: '#', current: false, src: '' },
-  { id: 4, name: 'title four', href: '#', current: false, src: '' },
-  { id: 5, name: 'title five', href: '#', current: false, src: '' },
-  { id: 6, name: 'title six', href: '#', current: false, src: '' },
-]
-
-
-// const searchData = async (text) => {
-//   setSearch(text)
-//   const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
-//     params: {
-//       part: 'snippet',
-//       q: search,
-//       maxResults: 15,
-//       key: KEY
+const prisma = new PrismaClient();
+// const defaultEndPoint = "https://rickandmortyapi.com/api/character/"
+// export async function getServerSideProps() {
+//   const res = await fetch(defaultEndPoint)
+//   const data = await res.json()
+//   return {
+//     props: {
+//       data
 //     }
-//   })
-//   setVideo(response.data.items)
+//   }
 // }
 
-const defaultEndPoint = "https://rickandmortyapi.com/api/character/"
-export async function getServerSideProps() {
-  const res = await fetch(defaultEndPoint)
-  const data = await res.json()
-  return {
-    props: {
-      data
-    }
+export  async function getStaticProps() {
+  const movies = await prisma.movie.findMany()
+  const movielist = JSON.parse(JSON.stringify(movies))
+
+  return { 
+    props: {movielist}
   }
 }
-export default function Home({ data }) {
+ 
+
+
+export default function Home(props) {
+  console.log("props", props.movielist)
   const [search, setSearch] = useState('')
   const [video, setVideo] = useState([])
 
@@ -82,7 +74,7 @@ export default function Home({ data }) {
     setVideo(response.data.items)
   }
 
-  console.log('videoState', video)
+  // console.log('videoState', video)
 
 
   return (
@@ -96,6 +88,30 @@ export default function Home({ data }) {
         <NavBar search={searchData} />
         <HeaderVideo />
         Found: {video.length}
+        Found: {props.movielist.length}
+        {props.movielist.map((movie) => {
+          return (
+            <div key={movie.id}>
+              <h1>{movie.Title}</h1>
+              <img 
+              src={movie.image}
+                className="
+                                            snap-center
+                                            scroll-hidden
+                                            hover:z-50
+                                            sm:w-screen
+                                            sm:h-1/2
+                                            sm:mx-2 mx-3 hover:scale-110 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 inline-flex
+                                            transition transform-all active:scale-95 ease-in-out font-semibold items-center 
+                                            uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm "
+                autoPlay
+                frameBorder="0"
+              />
+            </div>
+            // <h1>{movie.id}</h1>
+          )
+        }
+        )}
         <HorizontalList data={video} />
       </div>
     </div>

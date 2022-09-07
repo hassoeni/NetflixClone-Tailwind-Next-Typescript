@@ -2,7 +2,7 @@ import React from 'react'
 import { useSearch } from '../../context/SearchContext'
 
 export default function HorizontalList({ data, title }) {
-    console.log('DATA', data)
+    // console.log('DATA', data)
     const searchState = useSearch()
 
     
@@ -13,7 +13,7 @@ export default function HorizontalList({ data, title }) {
                 {data.filter((movieitem) =>
                     movieitem.snippet.title.toLowerCase().includes(searchState.searchTerm)).map(movie => {
                         const videoSrc = `https://www.youtube.com/embed/${movie.id.videoId}`
-                        console.log('MOVIE', movie)
+                        // console.log('MOVIE', movie)
                         return (
                             <>
                             {/* TODO add initial search and lift searchbar up towards context */}
