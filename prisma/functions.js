@@ -79,3 +79,13 @@ export default async function handle(req, res) {
 			console.error(e)
 		}
 	}
+// const defaultEndPoint = "https://rickandmortyapi.com/api/character/"
+// export async function getServerSideProps() {
+//   const res = await fetch(defaultEndPoint)
+//   const data = await res.json()
+//   return {
+//     props: {
+//       data
+//     }
+//   }
+// }

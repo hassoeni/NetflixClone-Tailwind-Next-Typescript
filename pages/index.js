@@ -3,35 +3,28 @@ import Head from 'next/head'
 import Button from '../src/components/Button/Button'
 import ButtonRowContainer from '../src/components/Button/ButtonRowContainer'
 import HeaderVideo from '../src/components/Header/HeaderVideo'
-import HorizontalList from '../src/components/HorizontalMovieList/HorizontalList'
+import HorizontalList from '../src/components/HorizontalMovieList/HorizontalListYoutube'
 import NavBar from '../src/components/NavBar/NavBar'
 import React, { useState } from 'react';
 import Youtube from './api/Youtube'
 import SearchBar from '../Legacy/SearchBar'
 import axios from 'axios'
-import { PrismaClient } from "@prisma/client";
+import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube'
+import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB'
+import prisma from '../lib/prisma'
 
-const prisma = new PrismaClient();
-// const defaultEndPoint = "https://rickandmortyapi.com/api/character/"
-// export async function getServerSideProps() {
-//   const res = await fetch(defaultEndPoint)
-//   const data = await res.json()
-//   return {
-//     props: {
-//       data
-//     }
-//   }
-// }
+// FETCH only Comedy Movies
 
-export  async function getStaticProps() {
+// FETCH ALL Movies
+export async function getStaticProps() {
   const movies = await prisma.movie.findMany()
   const movielist = JSON.parse(JSON.stringify(movies))
 
-  return { 
-    props: {movielist}
+  return {
+    props: { movielist }
   }
 }
- 
+
 
 
 export default function Home(props) {
@@ -87,32 +80,11 @@ export default function Home(props) {
       <div className="bg-black text-white">
         <NavBar search={searchData} />
         <HeaderVideo />
-        Found: {video.length}
-        Found: {props.movielist.length}
-        {props.movielist.map((movie) => {
-          return (
-            <div key={movie.id}>
-              <h1>{movie.Title}</h1>
-              <img 
-              src={movie.image}
-                className="
-                                            snap-center
-                                            scroll-hidden
-                                            hover:z-50
-                                            sm:w-screen
-                                            sm:h-1/2
-                                            sm:mx-2 mx-3 hover:scale-110 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 inline-flex
-                                            transition transform-all active:scale-95 ease-in-out font-semibold items-center 
-                                            uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm "
-                autoPlay
-                frameBorder="0"
-              />
-            </div>
-            // <h1>{movie.id}</h1>
-          )
-        }
-        )}
-        <HorizontalList data={video} />
+        <HorizontalListYoutube data={video} />
+        <HorizontalListDB data={props.movielist} category="Comedy"/>
+        <HorizontalListDB data={props.movielist} category="Fantasy"/>
+        <HorizontalListDB data={props.movielist} category="Animation"/>
+        <HorizontalListDB data={props.movielist} category="Action"/>
       </div>
     </div>
   )

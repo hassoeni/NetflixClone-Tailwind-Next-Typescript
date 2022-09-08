@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSearch } from '../../context/SearchContext'
 
-export default function HorizontalList({ data, title }) {
+export default function HorizontalListYoutube({ data, title }) {
     // console.log('DATA', data)
     const searchState = useSearch()
 
