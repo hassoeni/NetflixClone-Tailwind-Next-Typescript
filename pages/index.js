@@ -1,13 +1,7 @@
-import { Menu, Transition } from '@headlessui/react'
 import Head from 'next/head'
-import Button from '../src/components/Button/Button'
-import ButtonRowContainer from '../src/components/Button/ButtonRowContainer'
 import HeaderVideo from '../src/components/Header/HeaderVideo'
-import HorizontalList from '../src/components/HorizontalMovieList/HorizontalListYoutube'
 import NavBar from '../src/components/NavBar/NavBar'
 import React, { useState } from 'react';
-import Youtube from './api/Youtube'
-import SearchBar from '../Legacy/SearchBar'
 import axios from 'axios'
 import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube'
 import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB'

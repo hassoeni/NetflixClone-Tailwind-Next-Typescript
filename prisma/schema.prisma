@@ -14,14 +14,18 @@ model Movie {
   id Int @default(autoincrement()) @id
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  LikedCount   Int @default(autoincrement())
-  Liked Boolean 
-  Title   String @db.VarChar(255)
-  Description   String 
-  Category   String @db.VarChar(255)
+  likedCount   Int @default(autoincrement())
+  liked Boolean 
+  title   String @db.VarChar(255)
+  description   String 
+  category   String @db.VarChar(255)
   viewed  Boolean
   viewcount Int @default(0)
   image String
   url String
-  ReleaseYear DateTime @map(name:"release_year") 
+  ReleaseYear DateTime @map(name:"release_year")
+  cast   String
+  special Boolean 
+  specialtype String 
+  movielength String
 }
