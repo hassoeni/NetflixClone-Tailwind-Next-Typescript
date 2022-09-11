@@ -125,7 +125,7 @@ export default function Movie(props) {
 								{formattedDate}
 							</p>
 							{/* add series */}
-							<Series/>
+							{/* <Series/> */}
 							{/* add additional info */}
 						</div>
 					</div>

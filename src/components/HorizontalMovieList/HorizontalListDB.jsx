@@ -3,8 +3,9 @@ import React from 'react'
 import { useSearch } from '../../context/SearchContext'
 
 
-export default function HorizontalListDB({ data, category }, props) {
+export default function HorizontalListDB({ data, category }) {
 
+    console.log('DATA', data)
     const searchState = useSearch()
 
 

@@ -3,23 +3,23 @@ import React, { useState } from 'react'
 import prisma from '../../lib/prisma'
 
 // FETCH ALL Movies
-export async function getStaticProps() {
-	const movies = await prisma.serie.findMany()
-	const movielist = JSON.parse(JSON.stringify(movies))
+export async function getServerSideProps() {
+	const series = await prisma.serie.findMany()
+    const serielist = JSON.parse(JSON.stringify(series))
 
 	return {
-		props: { movielist },
+        props: { serielist },
 	}
 }
 
 
 // todo Make sure to add this whenever the user selects a certain serie such as game of thrones and display it in the card item. 
 export default function Home(props) {
-	console.log('serielist', props.movielist)
+    console.log('serielist', props.serielist)
 
 	return (
 		<>
-			{props.movielist.map((serie) => {
+            {props.serielist.map((serie) => {
 				return (
 					<div className="flex-col flex transition transform-all active:scale-95 ease-in-out  hover:scale-105 flex-shrink cursor-pointer mx-10 text-justify">
 						<div className="flex items-center gap-4 justify-between">
