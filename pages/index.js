@@ -6,6 +6,7 @@ import axios from 'axios'
 import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube'
 import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB'
 import prisma from '../lib/prisma'
+import Movie from './movies/[id]';
 
 // FETCH only Comedy Movies
 
@@ -75,10 +76,11 @@ export default function Home(props) {
         <NavBar search={searchData} />
         <HeaderVideo />
         <HorizontalListYoutube data={video} />
-        <HorizontalListDB data={props.movielist} category="Comedy"/>
-        <HorizontalListDB data={props.movielist} category="Fantasy"/>
-        <HorizontalListDB data={props.movielist} category="Animation"/>
-        <HorizontalListDB data={props.movielist} category="Action"/>
+        <HorizontalListDB data={props.movielist} category="Comedy" />
+        <HorizontalListDB data={props.movielist} category="Fantasy" />
+        <HorizontalListDB data={props.movielist} category="Animation" />
+        <HorizontalListDB data={props.movielist} category="Action" />
+        {/* <Movie/> */}
       </div>
     </div>
   )
