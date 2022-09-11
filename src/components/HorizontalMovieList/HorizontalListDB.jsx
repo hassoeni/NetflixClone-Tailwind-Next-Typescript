@@ -5,7 +5,6 @@ import { useSearch } from '../../context/SearchContext'
 
 export default function HorizontalListDB({ data, category }, props) {
 
-    console.log('DATA', props.movielist)
     const searchState = useSearch()
 
 

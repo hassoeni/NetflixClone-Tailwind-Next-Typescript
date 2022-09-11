@@ -7,6 +7,7 @@ import OutlinedIcons from '../../src/components/Icons/OutlinedIcons'
 import Link from 'next/link'
 import TooltipsBase from '../../src/components/Tooltip/TooltipBaseSizeTop'
 import TooltipBaseSizeTop from '../../src/components/Tooltip/TooltipBaseSizeTop'
+import Series from '../series'
 const prisma = new PrismaClient()
 
 export default function Movie(props) {
@@ -123,7 +124,8 @@ export default function Movie(props) {
 								<span className="text-slate-400">Release Year: </span>
 								{formattedDate}
 							</p>
-							{/* add genres */}
+							{/* add series */}
+							<Series/>
 							{/* add additional info */}
 						</div>
 					</div>
