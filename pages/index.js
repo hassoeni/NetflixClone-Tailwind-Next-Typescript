@@ -21,11 +21,31 @@ export async function getStaticProps() {
 }
 
 
-
 export default function Home(props) {
-  console.log("props", props.movielist)
   const [search, setSearch] = useState('')
   const [video, setVideo] = useState([])
+
+// ! Dit werkt bij klikken fetcht hij alle Data nu nog gefilterde data
+  const getMovieList = async (e) => {
+    // res.body doorgeven en req.body ontvangen
+    try {
+      const body = 'comedy' // welke data wil je doorgeven
+      const response = await fetch(`api/moviefeed`, {
+        // waar moet die data heen
+        method: 'POST', // welke methode wil je toepassen
+        headers: { 'Content-Type': 'application/json' }, // welke eigenschappen heeft die data nodig
+        body: JSON.stringify(body), // in welke format moet die data worden opgeslagen
+      })
+      console.log(response)
+      const data = await response.json()
+      console.log(data)
+      console.log('data successfully send ')
+      // await Router.push("/p/[id]", `/p/${email}`) // return to main screen 
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
 
   // const playVideo = e => {
@@ -62,7 +82,6 @@ export default function Home(props) {
     setVideo(response.data.items)
   }
 
-  // console.log('videoState', video)
 
 
   return (
@@ -76,10 +95,14 @@ export default function Home(props) {
         <NavBar search={searchData} />
         <HeaderVideo />
         <HorizontalListYoutube data={video} />
+        <div>
         <HorizontalListDB data={props.movielist} category="Comedy" />
         <HorizontalListDB data={props.movielist} category="Fantasy" />
         <HorizontalListDB data={props.movielist} category="Animation" />
         <HorizontalListDB data={props.movielist} category="Action" />
+        </div>
+        <button onClick={getMovieList}>get movie</button>
+
       </div>
     </div>
   )

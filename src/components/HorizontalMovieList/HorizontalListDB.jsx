@@ -6,7 +6,6 @@ import SolidIcons from '../Icons/SolidIcons'
 import HoverButtonRow from './HoverButtonRow'
 
 export default function HorizontalListDB({ data, category }) {
-	console.log('DATA', data)
 	const searchState = useSearch()
 
 	return (

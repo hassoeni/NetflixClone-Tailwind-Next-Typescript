@@ -1,8 +1,10 @@
-1. Step one Build UI  for netflix //
-2. Step two set up mock backend it should contain a table that has videos per category in it use prisma for backend setup 
-2a. backend should contain id, category, movie title, movie description, created at, updated at, movie description, movie url, watched(true or false), liked (true or false), its a relational table so user id should be linked 
-3. Pull backend into front end and showcase the data for the movies. 
+1. Step one Build UI  for netflix //done 
+2. Step two set up mock backend it should contain a table that has videos per category in it use prisma for backend setup // done 
+2a. backend should contain id, category, movie title, movie description, created at, updated at, movie description, movie url, watched(true or false), liked (true or false), its a relational table so user id should be linked  // done 
+3. Pull backend into front end and showcase the data for the movies. //done 
 4. make a login and sign up user setup. 
-5. present a horizontal row for each category  and auto play video on hover. when hover autoscale video up towards 115 and showcase the description underneath the video and a fullscreen play button 
-
+5. present a horizontal row for each category  and auto play video on hover. when hover autoscale video up towards 115 and showcase the description underneath the video and a fullscreen play button //done 
+6. showcase for series episodes bellow its parent 
+7. add sidenav bar 
+8. fetch multiple data but for category only 
 
