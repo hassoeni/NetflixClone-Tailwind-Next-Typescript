@@ -3,17 +3,9 @@ import React, { useState } from 'react'
 import { useSearch } from '../../context/SearchContext'
 import OutlinedIcons from '../Icons/OutlinedIcons'
 import SolidIcons from '../Icons/SolidIcons'
+import HoverButtonRow from './HoverButtonRow'
 
 export default function HorizontalListDB({ data, category }) {
-	const [liked, setLiked] = useState(false)
-	const [favorite, setFavorite] = useState(false)
-	function handleLike() {
-		setLiked(!liked)
-	}
-	function handleFavorite() {
-		setFavorite(!favorite)
-	}
-
 	console.log('DATA', data)
 	const searchState = useSearch()
 
@@ -26,9 +18,10 @@ export default function HorizontalListDB({ data, category }) {
 						movieitem.category.toLowerCase().includes(searchState.searchTerm)
 					)
 					.map((movie) => {
+                       
 						return (
-							<div className="group relative">
-								<Link key={movie.id} href={`/movies/${movie.id}`}>
+                            <div className="group relative" key={movie.id}>
+								<Link  href={`/movies/${movie.id}`}>
 									<img
 										src={movie.image}
 										className="
@@ -52,32 +45,7 @@ export default function HorizontalListDB({ data, category }) {
 										frameBorder="0"
 									/>
 								</Link>
-								<div className="hidden group-hover:block group-hover:z-50 absolute bottom-8 left-8">
-									{/* playbutton */}
-									<button className="absolute gap-2 p-2.5 text-3xl text-black uppercase transition ease-in-out bg-white  border-none rounded-full shadow-lg  transform-all active:scale-95 delay-50 bottom-0.5">
-										<SolidIcons icon={'PlayIcon'} />
-									</button>
-									<button
-										onClick={handleLike}
-										className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-0.5 left-16 bg-slate-700"
-									>
-										{liked ? (
-											<SolidIcons icon={'ThumbUpIcon'} />
-										) : (
-											<OutlinedIcons icon={'ThumbUpIcon'} />
-										)}
-									</button>
-									<button
-										onClick={handleFavorite}
-										className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-1/2 left-40 bg-slate-700"
-									>
-										{favorite ? (
-											<SolidIcons icon={'PlusIcon'} />
-										) : (
-											<OutlinedIcons icon={'PlusIcon'} />
-										)}
-									</button>
-								</div>
+								<HoverButtonRow/>
 							</div>
 						)
 					})}
