@@ -38,30 +38,30 @@ export default function Movie(props) {
 	const formatoptions = { year: 'numeric' }
 	const formattedDate = date.toLocaleDateString(formatoptions)
 	return (
-            <div className="justify-center items-center flex h-auto bg-slate-900 text-white px-96 min-h-screen">
-			<div className="flex-col my-10  p-8 h-full self-start space-y-6 space-x-8 relative flex-shrink m-40 bg-clip-content bg-gradient-to-t from-slate-800 via-stone-900">
+		<div className="flex items-center justify-center h-auto min-h-screen text-white bg-gradient-to-t from-slate-800 via-stone-900 to-slate-900 px-96">
+			<div className="relative flex-col self-start flex-shrink h-full p-8 m-40 my-10 space-x-8 space-y-6 bg-clip-content bg-gradient-to-t from-slate-800 via-stone-900 to-slate-900">
 				<img
 					src={props.film.image}
-                        className="aspect-video object-cover w-full h-1/2 border-t-2 rounded-t-md"
+                        className="object-cover w-full aspect-video h-1/2 rounded-t-md"
 				/>
 				<div className="inline-flex">
-					<button className=" transition transform-all active:scale-95 delay-50 ease-in-out border-2 border-black uppercase absolute bottom-1/2 text-black p-2 rounded-md bg-white flex gap-2 shadow-lg">
+					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg  transform-all active:scale-95 delay-50 bottom-1/2">
 						<SolidIcons icon={'PlayIcon'} />
 						play
 					</button>
 					<button
 						onClick={returnTohome}
-						className="transition transform-all active:scale-95 delay-50 ease-in-out border-2 border-white uppercase absolute top-12 right-14 text-white p-2 rounded-full bg-slate-700 text-3xl"
+						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 top-12 right-14 bg-slate-700"
 					>
 						<SolidIcons icon={'XIcon'} />
 					</button>
 					<button
 						onClick={handleFavorite}
-						className="transition transform-all active:scale-95 delay-50 ease-in-out border-2 border-white uppercase absolute bottom-1/2 left-40 text-white p-2 rounded-full bg-slate-700 text-3xl"
+						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-1/2 left-40 bg-slate-700"
 					>
 						{/* <!-- Base Size Top Tooltip --> */}
 						<span
-							className="group relative cursor-pointer overflow-hidden hover:overflow-visible"
+							className="relative overflow-hidden cursor-pointer group hover:overflow-visible"
 							aria-describedby="tooltip-01"
 						>
 							{/* <!-- Add your tooltip trigger between here --> */}
@@ -83,7 +83,7 @@ export default function Movie(props) {
 					</button>
 					<button
 						onClick={handleLike}
-						className="transition transform-all active:scale-95 delay-50 ease-in-out border-2 border-white uppercase absolute bottom-1/2 left-56 text-white p-2 rounded-full bg-slate-700 text-3xl"
+						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-1/2 left-56 bg-slate-700"
 					>
 						{liked ? (
 							<SolidIcons icon={'ThumbUpIcon'} />
@@ -93,16 +93,16 @@ export default function Movie(props) {
 					</button>
 				</div>
 				<div className="flex flex-wrap items-baseline gap-4 text-justify ">
-					<div className="flex-1 flex justify-around">
+					<div className="flex justify-around flex-1">
 						<div className="flex flex-col space-y-3">
-							<span className="text-red-700 font-semibold">{`View count: ${props.film.viewcount}`}</span>
-							<div className="flex gap-2 items-center">
-								<span className="text-green-700 font-semibold">
+							<span className="font-semibold text-red-700">{`View count: ${props.film.viewcount}`}</span>
+							<div className="flex items-center gap-2">
+								<span className="font-semibold text-green-700">
 									{randomNumber()}% match
 								</span>
 								<p>{props.film.category}</p>
 								<p>{props.film.movielength}</p>
-								<div className="border-2 px-1 border-slate-700 font-semibold text-xs">
+								<div className="px-1 text-xs font-semibold border-2 border-slate-700">
 									HD
 								</div>
 							</div>

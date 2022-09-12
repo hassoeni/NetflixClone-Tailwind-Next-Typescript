@@ -21,22 +21,13 @@ export default function Home(props) {
 		<>
             {props.serielist.map((serie) => {
 				return (
-					<div className="flex-col flex transition transform-all active:scale-95 ease-in-out  hover:scale-105 flex-shrink cursor-pointer mx-10 text-justify">
-						<div className="flex items-center gap-4 justify-between">
+					<div className="flex flex-col flex-shrink mx-10 text-justify transition ease-in-out cursor-pointer transform-all active:scale-95 hover:scale-105">
+						<div className="flex items-center justify-between gap-4">
 							<div>{serie.episodeid}</div>
 							<Link key={serie.id} href={`/series/${serie.id}`}>
-								<img
+								<img 
 									src={serie.image}
-									className="
-                                     max-h-48
-                                        snap-center
-                                        scroll-hidden
-                                        hover:z-50
-                                        sm:w-40
-                                        sm:h-full
-                                        sm:mx-2 mx-3 flex-shrink p-5 sm:p-2 text-sm sm:text-md gap-2 
-                                        font-semibold items-center 
-                                        uppercase shadow-xl drop-shadow-lg cursor-pointer text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm object-cover "
+									className="items-center flex-shrink object-cover gap-2 p-5 mx-3 text-sm font-semibold uppercase shadow-xl cursor-pointer max-h-48 snap-center scroll-hidden hover:z-50 sm:w-40 sm:h-full sm:mx-2 sm:p-2 sm:text-md drop-shadow-lg text-slate-500 hover:text-indigo-600 divide-x-w-full sm:rounded-sm"
 									allowFullScreen
 									autoPlay
 									frameBorder="0"

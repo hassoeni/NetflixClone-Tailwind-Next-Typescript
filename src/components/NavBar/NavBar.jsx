@@ -55,6 +55,7 @@ export default function NavBar(props) {
                 </div>
                 <SolidIcons icon={"BellIcon"} />
                 <SolidIcons icon={"UserIcon"} />
+                
             </div>
         </nav>
     );
