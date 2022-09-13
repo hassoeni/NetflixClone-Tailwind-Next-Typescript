@@ -49,7 +49,7 @@ export default function Movie(props) {
                         className="object-cover w-full aspect-video h-1/2 rounded-t-md"
 				/>
 				<div className="inline-flex">
-					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg  transform-all active:scale-95 delay-50 bottom-1/2">
+					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg  transform-all active:scale-95 delay-50 top-96">
 						<SolidIcons icon={'PlayIcon'} />
 						play
 					</button>
@@ -61,7 +61,7 @@ export default function Movie(props) {
 					</button>
 					<button
 						onClick={handleFavorite}
-						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-1/2 left-40 bg-slate-700"
+						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 top-96 left-40 bg-slate-700"
 					>
 						{/* <!-- Base Size Top Tooltip --> */}
 						<span
@@ -87,7 +87,7 @@ export default function Movie(props) {
 					</button>
 					<button
 						onClick={handleLike}
-						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 bottom-1/2 left-56 bg-slate-700"
+						className="absolute p-2 text-3xl text-white uppercase transition ease-in-out border-2 border-white rounded-full transform-all active:scale-95 delay-50 top-96 left-56 bg-slate-700"
 					>
 						{liked ? (
 							<SolidIcons icon={'ThumbUpIcon'} />
@@ -128,15 +128,11 @@ export default function Movie(props) {
 								<span className="text-slate-400">Release Year: </span>
 								{formattedDate}
 							</p>
-							<li>{props.series.map(allmyepisode => {
-								return (
-									<div key={allmyepisode.episodeid}>
-										{allmyepisode.episodeTitle}
-									</div>)
-							})}</li>
 						</div>
 					</div>
 				</div>
+				{/* ! FIX TAB season: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 */}
+							<Series serielist={props.series} />
 			</div>
         </div>
 	)

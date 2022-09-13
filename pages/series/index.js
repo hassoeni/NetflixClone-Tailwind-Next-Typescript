@@ -1,19 +1,9 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import prisma from '../../lib/prisma'
-
-// FETCH ALL Movies
-export async function getStaticProps() {
-	const series = await prisma.serie.findMany()
-    const serielist = JSON.parse(JSON.stringify(series))
-
-	return {
-        props: { serielist },
-	}
-}
 
 
-// todo Make sure to add this whenever the user selects a certain serie such as game of thrones and display it in the card item. 
+
+// todo make sure to add a tab and display only episodes per season
 export default function Series(props) {
     console.log('serielist', props.serielist)
 
