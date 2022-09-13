@@ -12,7 +12,9 @@ import Series from './series';
 
 // FETCH ALL Movies
 export async function getStaticProps() {
-  const movies = await prisma.movie.findMany()
+  const movies = await prisma.movie.findMany({
+
+  })
   const movielist = JSON.parse(JSON.stringify(movies))
 
   return {
@@ -24,22 +26,23 @@ export async function getStaticProps() {
 export default function Home(props) {
   const [search, setSearch] = useState('')
   const [video, setVideo] = useState([])
+  const [serieData, setSerieData] = useState([])
 
-// ! Dit werkt bij klikken fetcht hij alle Data nu nog gefilterde data
-  const getMovieList = async (e) => {
+// ! Dit werkt bij klikken fetcht hij alle gefilterde data in dit geval comedy nu moet het gelijk zijn aan de serie die je selecteert 
+  const getSerieList = async (e) => {
     // res.body doorgeven en req.body ontvangen
     try {
-      const body = 'comedy' // welke data wil je doorgeven
-      const response = await fetch(`api/moviefeed`, {
+      const body = {category: 'Fantasy'} // welke data wil je doorgeven maak het specifiek
+      const response = await fetch(`api/seriefeed`, {
         // waar moet die data heen
         method: 'POST', // welke methode wil je toepassen
         headers: { 'Content-Type': 'application/json' }, // welke eigenschappen heeft die data nodig
         body: JSON.stringify(body), // in welke format moet die data worden opgeslagen
       })
       console.log(response)
-      const data = await response.json()
-      console.log(data)
-      console.log('data successfully send ')
+      const serielist = await response.json() // data terug ontvangen 
+      setSerieData(serielist) // data vastleggen in een variable
+      console.log('data successfully send ', {serielist})
       // await Router.push("/p/[id]", `/p/${email}`) // return to main screen 
     } catch (error) {
       console.error(error)
@@ -101,8 +104,14 @@ export default function Home(props) {
         <HorizontalListDB data={props.movielist} category="Animation" />
         <HorizontalListDB data={props.movielist} category="Action" />
         </div>
-        <button onClick={getMovieList}>get movie</button>
-
+        <button onClick={getSerieList}>get serielist</button>
+        {serieData.map(singleSerie => {
+          return(
+            <>
+              <div>{singleSerie.episodeTitle}</div>
+            </>
+          )
+        })}
       </div>
     </div>
   )

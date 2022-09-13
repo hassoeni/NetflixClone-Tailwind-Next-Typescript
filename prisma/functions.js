@@ -89,3 +89,24 @@ export default async function handle(req, res) {
 //     }
 //   }
 // }
+
+
+// ! Dit werkt bij klikken fetcht hij alle gefilterde data in dit geval comedy nu moet het gelijk zijn aan de serie die je selecteert 
+const getFilteredMovieList = async (e) => {
+	// res.body doorgeven en req.body ontvangen
+	try {
+		const body = { category: 'Comedy' } // welke data wil je doorgeven maak het specifiek
+		const response = await fetch(`api/moviefeed`, {
+			// waar moet die data heen
+			method: 'POST', // welke methode wil je toepassen
+			headers: { 'Content-Type': 'application/json' }, // welke eigenschappen heeft die data nodig
+			body: JSON.stringify(body), // in welke format moet die data worden opgeslagen
+		})
+		// console.log(response)
+		const movielist = await response.json() // data terug ontvangen 
+		setMovieData(movielist) // data vastleggen in een variable
+		// console.log('data successfully send ', movielist)
+		// await Router.push("/p/[id]", `/p/${email}`) // return to main screen 
+	} catch (error) {
+		console.error(error)
+	}

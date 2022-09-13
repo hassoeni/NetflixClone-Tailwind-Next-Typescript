@@ -13,10 +13,9 @@ const prisma = new PrismaClient()
 export default function Movie(props) {
 	const [liked, setLiked] = useState(false)
 	const [favorite, setFavorite] = useState(false)
+	const [serieData, setSerieData] = useState([])
+	// console.log(props.series)
 
-	console.log('props film', props.film)
-	const [showEditFoodModal, setShowEditFoodModal] = useState(false)
-	const router = useRouter()
 
 	function randomNumber() {
 		return Math.floor(Math.random(100) * 100)
@@ -37,6 +36,11 @@ export default function Movie(props) {
 	const date = new Date(ReleaseYear)
 	const formatoptions = { year: 'numeric' }
 	const formattedDate = date.toLocaleDateString(formatoptions)
+
+
+
+
+
 	return (
 		<div className="flex items-center justify-center h-auto min-h-screen text-white bg-gradient-to-t from-slate-800 via-stone-900 to-slate-900 px-96">
 			<div className="relative flex-col self-start flex-shrink h-full p-8 m-40 my-10 space-x-8 space-y-6 bg-clip-content bg-gradient-to-t from-slate-800 via-stone-900 to-slate-900">
@@ -124,9 +128,12 @@ export default function Movie(props) {
 								<span className="text-slate-400">Release Year: </span>
 								{formattedDate}
 							</p>
-							{/* add series */}
-							{/* <Series/> */}
-							{/* add additional info */}
+							<li>{props.series.map(allmyepisode => {
+								return (
+									<div key={allmyepisode.episodeid}>
+										{allmyepisode.episodeTitle}
+									</div>)
+							})}</li>
 						</div>
 					</div>
 				</div>
@@ -142,13 +149,22 @@ export default function Movie(props) {
 
 export async function getServerSideProps(context) {
 	const { id } = context.params
-	const onemovie = await prisma.movie.findUnique({
+ 	const onemovie = await prisma.movie.findUnique({
 		where: { id: parseInt(id) },
 	})
+
+	const serielist = await prisma.serie.findMany({
+		where: {parentId: parseInt(id)}
+	})
+
+
+	const series = JSON.parse(JSON.stringify(serielist))
 	const film = JSON.parse(JSON.stringify(onemovie))
+
 	return {
 		props: {
 			film,
+			series,
 		},
 	}
 }
