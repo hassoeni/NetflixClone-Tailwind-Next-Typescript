@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import Router, { useRouter } from 'next/router'
 import SolidIcons from '../../src/components/Icons/SolidIcons'
@@ -8,13 +8,14 @@ import Link from 'next/link'
 import TooltipsBase from '../../src/components/Tooltip/TooltipBaseSizeTop'
 import TooltipBaseSizeTop from '../../src/components/Tooltip/TooltipBaseSizeTop'
 import Series from '../series'
+import TabsLgBasicFullWidth from '../../src/components/ActiveTabs/ActiveTab'
 const prisma = new PrismaClient()
 
 export default function Movie(props) {
 	const [liked, setLiked] = useState(false)
 	const [favorite, setFavorite] = useState(false)
 	const [serieData, setSerieData] = useState([])
-	// console.log(props.series)
+
 
 
 	function randomNumber() {
@@ -49,7 +50,7 @@ export default function Movie(props) {
                         className="object-cover w-full aspect-video h-1/2 rounded-t-md"
 				/>
 				<div className="inline-flex">
-					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg  transform-all active:scale-95 delay-50 top-96">
+					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg transform-all active:scale-95 delay-50 top-96">
 						<SolidIcons icon={'PlayIcon'} />
 						play
 					</button>
@@ -131,8 +132,8 @@ export default function Movie(props) {
 						</div>
 					</div>
 				</div>
-				{/* ! FIX TAB season: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 */}
-							<Series serielist={props.series} />
+				<TabsLgBasicFullWidth serielist={props.series}/>
+							{/* <Series serielist={props.series} /> */}
 			</div>
         </div>
 	)

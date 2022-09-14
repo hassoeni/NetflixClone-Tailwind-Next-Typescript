@@ -2,7 +2,7 @@ import prisma from "../../lib/prisma";
 
 
 
-// ! TODO adjust to fetch specific data such as category comedy
+
 export default async function handle(req, res) {
     // const {category} = req.body;
     console.log(req.body)

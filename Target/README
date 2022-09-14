@@ -4,7 +4,10 @@
 3. Pull backend into front end and showcase the data for the movies. //done 
 4. make a login and sign up user setup. 
 5. present a horizontal row for each category  and auto play video on hover. when hover autoscale video up towards 115 and showcase the description underneath the video and a fullscreen play button //done 
-6. showcase for series episodes bellow its parent 
+6. showcase for series episodes bellow its parent  // done 
 7. add sidenav bar 
-8. fetch multiple data but for category only 
+8. fetch multiple data but for category only // done 
+9. on season select filter result 
+10. if data = movie dont show tabs with season data. 
+
 
