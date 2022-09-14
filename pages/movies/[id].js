@@ -133,7 +133,6 @@ export default function Movie(props) {
 					</div>
 				</div>
 				<TabsLgBasicFullWidth serielist={props.series}/>
-							{/* <Series serielist={props.series} /> */}
 			</div>
         </div>
 	)

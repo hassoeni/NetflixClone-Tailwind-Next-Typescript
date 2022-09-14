@@ -2,12 +2,14 @@
 2. Step two set up mock backend it should contain a table that has videos per category in it use prisma for backend setup // done 
 2a. backend should contain id, category, movie title, movie description, created at, updated at, movie description, movie url, watched(true or false), liked (true or false), its a relational table so user id should be linked  // done 
 3. Pull backend into front end and showcase the data for the movies. //done 
-4. make a login and sign up user setup. 
 5. present a horizontal row for each category  and auto play video on hover. when hover autoscale video up towards 115 and showcase the description underneath the video and a fullscreen play button //done 
 6. showcase for series episodes bellow its parent  // done 
-7. add sidenav bar 
+7. add the netflix collapsable sidenav bar 
 8. fetch multiple data but for category only // done 
-9. on season select filter result 
+9. on season select filter result // done 
 10. if data = movie dont show tabs with season data. 
+4. make a login and sign up user setup. 
+11. add functionality if user likes of adds movie to watchlist it gets added somewhere
+12. upgrade  functionality so that a user can add it to a backend
 
 

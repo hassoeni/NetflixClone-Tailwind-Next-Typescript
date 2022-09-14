@@ -20,9 +20,9 @@ export default function TabsLgBasicFullWidth({serielist}) {
                 >
                     <li className="flex-1" role="presentation ">
                         <button
-                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-600 focus:bg-emerald-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 1
-                                    ? "border-emerald-500 stroke-emerald-500 text-emerald-500 hover:border-emerald-600  hover:text-emerald-600 focus:border-emerald-700 focus:stroke-emerald-700 focus:text-emerald-700 disabled:border-slate-500"
-                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-emerald-500 hover:text-emerald-500 focus:border-emerald-600 focus:stroke-emerald-600 focus:text-emerald-600 disabled:text-slate-500"
+                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-red-50 hover:stroke-red-600 focus:bg-red-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 1
+                                    ? "border-red-500 stroke-red-500 text-red-500 hover:border-red-600  hover:text-red-600 focus:border-red-700 focus:stroke-red-700 focus:text-red-700 disabled:border-slate-500"
+                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-red-500 hover:text-red-500 focus:border-red-600 focus:stroke-red-600 focus:text-red-600 disabled:text-slate-500"
                                 }`}
                             id="tab-label-1a"
                             role="tab"
@@ -39,9 +39,9 @@ export default function TabsLgBasicFullWidth({serielist}) {
                     </li>
                     <li className="flex-1" role="presentation ">
                         <button
-                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-600 focus:bg-emerald-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 2
-                                    ? "border-emerald-500 stroke-emerald-500 text-emerald-500 hover:border-emerald-600  hover:text-emerald-600 focus:border-emerald-700 focus:stroke-emerald-700 focus:text-emerald-700 disabled:border-slate-500"
-                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-emerald-500 hover:text-emerald-500 focus:border-emerald-600 focus:stroke-emerald-600 focus:text-emerald-600 disabled:text-slate-500"
+                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-red-50 hover:stroke-red-600 focus:bg-red-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 2
+                                    ? "border-red-500 stroke-red-500 text-red-500 hover:border-red-600  hover:text-red-600 focus:border-red-700 focus:stroke-red-700 focus:text-red-700 disabled:border-slate-500"
+                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-red-500 hover:text-red-500 focus:border-red-600 focus:stroke-red-600 focus:text-red-600 disabled:text-slate-500"
                                 }`}
                             id="tab-label-2a"
                             role="tab"
@@ -58,9 +58,9 @@ export default function TabsLgBasicFullWidth({serielist}) {
                     </li>
                     <li className="flex-1" role="presentation ">
                         <button
-                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-600 focus:bg-emerald-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 3
-                                    ? "border-emerald-500 stroke-emerald-500 text-emerald-500 hover:border-emerald-600  hover:text-emerald-600 focus:border-emerald-700 focus:stroke-emerald-700 focus:text-emerald-700 disabled:border-slate-500"
-                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-emerald-500 hover:text-emerald-500 focus:border-emerald-600 focus:stroke-emerald-600 focus:text-emerald-600 disabled:text-slate-500"
+                            className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-red-50 hover:stroke-red-600 focus:bg-red-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === 3
+                                    ? "border-red-500 stroke-red-500 text-red-500 hover:border-red-600  hover:text-red-600 focus:border-red-700 focus:stroke-red-700 focus:text-red-700 disabled:border-slate-500"
+                                    : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-red-500 hover:text-red-500 focus:border-red-600 focus:stroke-red-600 focus:text-red-600 disabled:text-slate-500"
                                 }`}
                             id="tab-label-3a"
                             role="tab"
@@ -80,7 +80,7 @@ export default function TabsLgBasicFullWidth({serielist}) {
                 <div>
                     <Series serielist={serielist} seasonselected={tabSelected.currentTab}/>
                 </div>
-                <div className="">
+                {/* <div className="">
                     <div
                         className={`px-6 py-4 ${tabSelected.currentTab === 1 ? "" : "hidden"
                             }`}
@@ -129,7 +129,7 @@ export default function TabsLgBasicFullWidth({serielist}) {
                             cannot do so without the performance of work.
                         </p>
                     </div>
-                </div>
+                </div> */}
             </section>
         </>
     )
