@@ -12,6 +12,7 @@ import TabsLgBasicFullWidth from '../../src/components/ActiveTabs/ActiveTab'
 const prisma = new PrismaClient()
 
 export default function Movie(props) {
+	console.log(props.film)
 	const [liked, setLiked] = useState(false)
 	const [favorite, setFavorite] = useState(false)
 	const [serieData, setSerieData] = useState([])
@@ -132,7 +133,7 @@ export default function Movie(props) {
 						</div>
 					</div>
 				</div>
-				<TabsLgBasicFullWidth serielist={props.series}/>
+				<TabsLgBasicFullWidth serielist={props.series} isAmovie={props.film.isaserie}/>
 			</div>
         </div>
 	)

@@ -15,13 +15,12 @@ export default function Series({serielist, seasonselected}) {
 		<>
 		{
 			serielist.map((serie) => {
-				console.log({serie})
 				return (
 					<>
 						{serie.season == seasonselected ? <>
 							<div key={serie.episodeid} className="flex flex-col flex-shrink mx-10 text-justify transition ease-in-out cursor-pointer transform-all active:scale-95 hover:scale-105">
 								<div className="flex items-center justify-between gap-4">
-									<div>{serie.episodeid}</div>
+									<div>{serie.length}</div>
 									<Link key={serie.id} href={`/series/${serie.episodeid}`}>
 										<img
 											src={serie.image}

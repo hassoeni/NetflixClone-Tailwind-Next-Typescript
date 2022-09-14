@@ -29,6 +29,7 @@ model Movie {
   specialtype String 
   movielength String
   hasserie Serie[]
+  isaserie Boolean @default(false)
 }
 
 model Serie { 
