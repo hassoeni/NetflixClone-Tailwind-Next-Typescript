@@ -7,7 +7,7 @@ export default function TabsLgBasicFullWidth({ serielist, isAmovie }) {
 		noTabs: 3,
 	})
 
-    let numberofseasons = 6 
+	let numberofseasons = 6
 
 	const wrapperRef = useRef(null)
 	const navigation = [
@@ -29,10 +29,7 @@ export default function TabsLgBasicFullWidth({ serielist, isAmovie }) {
 		},
 	]
 
-    for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        
-    }
+	
 	return (
 		<>
 			{isAmovie ? (
@@ -48,22 +45,19 @@ export default function TabsLgBasicFullWidth({ serielist, isAmovie }) {
 									<button
 										className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-t border-b-2 
                                         px-6 text-sm font-medium tracking-wide transition duration-300 
-                            hover:bg-red-50 hover:stroke-red-600 focus:bg-red-50 focus-visible:outline-none disabled:cursor-not-allowed ${
-															tabSelected.currentTab === navitems.id
-																? 'border-red-500 stroke-red-500 text-red-500 hover:border-red-600  hover:text-red-600 focus:border-red-700 focus:stroke-red-700 focus:text-red-700 disabled:border-slate-500'
-																: 'justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-red-500 hover:text-red-500 focus:border-red-600 focus:stroke-red-600 focus:text-red-600 disabled:text-slate-500'
-														}`}
+                            		  hover:bg-red-50 hover:stroke-red-600 focus:bg-red-50 focus-visible:outline-none disabled:cursor-not-allowed ${tabSelected.currentTab === navitems.id
+												? 'border-red-500 stroke-red-500 text-red-500 hover:border-red-600  hover:text-red-600 focus:border-red-700 focus:stroke-red-700 focus:text-red-700 disabled:border-slate-500'
+												: 'justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-red-500 hover:text-red-500 focus:border-red-600 focus:stroke-red-600 focus:text-red-600 disabled:text-slate-500'
+											}`}
 										id={navitems.identifier}
 										role={navitems.role}
 										aria-setsize={navitems.ariasetsize}
 										aria-posinset={navitems.ariaposinset}
-										tabIndex={`${
-											tabSelected.currentTab === navitems.id ? '0' : '-1'
-										}`}
+										tabIndex={`${tabSelected.currentTab === navitems.id ? '0' : '-1'
+											}`}
 										aria-controls={navitems.ariacontrols}
-										aria-selected={`${
-											tabSelected.currentTab === navitems.id ? 'true' : 'false'
-										}`}
+										aria-selected={`${tabSelected.currentTab === navitems.id ? 'true' : 'false'
+											}`}
 										onClick={() =>
 											setTabSelected({
 												...tabSelected,
@@ -78,7 +72,7 @@ export default function TabsLgBasicFullWidth({ serielist, isAmovie }) {
 						</>
 					</ul>
 					{/* !-- Displays content based on tab selection --! */}
-					<div>
+					<div className='mt-4'>
 						<Series
 							serielist={serielist}
 							seasonselected={tabSelected.currentTab}

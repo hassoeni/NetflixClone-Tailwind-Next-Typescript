@@ -1,10 +1,28 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
-export default function Episode() {
+import prisma from '../../lib/prisma'
+
+
+
+
+export default function Episode({episodeprops}) {
   return (
     <div className="w-screen h-screen">
 
-      <ReactPlayer url='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'  playing width={1920} height={1080} pip={true}/>
+      <ReactPlayer url={episodeprops[0].url}  playing width={1920} height={1080} pip={true}/>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const {id} = context.params
+  const episodedetail = await prisma.serie.findMany({
+    where: { episodeid: parseInt(id) }
+  })
+  const episodeprops = JSON.parse(JSON.stringify(episodedetail))
+  return {
+    props:{
+      episodeprops
+    }
+  }
 }

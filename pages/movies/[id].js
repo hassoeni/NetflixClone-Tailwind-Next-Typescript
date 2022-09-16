@@ -1,15 +1,16 @@
-import { PrismaClient } from '@prisma/client'
+// import { PrismaClient } from '@prisma/client'
 import { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import Router, { useRouter } from 'next/router'
 import SolidIcons from '../../src/components/Icons/SolidIcons'
 import OutlinedIcons from '../../src/components/Icons/OutlinedIcons'
-import Link from 'next/link'
-import TooltipsBase from '../../src/components/Tooltip/TooltipBaseSizeTop'
-import TooltipBaseSizeTop from '../../src/components/Tooltip/TooltipBaseSizeTop'
-import Series from '../series'
+// import Link from 'next/link'
+// import TooltipsBase from '../../src/components/Tooltip/TooltipBaseSizeTop'
+// import TooltipBaseSizeTop from '../../src/components/Tooltip/TooltipBaseSizeTop'
+// import Series from '../series'
 import TabsLgBasicFullWidth from '../../src/components/ActiveTabs/ActiveTab'
-const prisma = new PrismaClient()
+// const prisma = new PrismaClient()
+import prisma from '../../lib/prisma'
 
 export default function Movie(props) {
 	console.log(props.film)
@@ -48,7 +49,7 @@ export default function Movie(props) {
 			<div className="relative flex-col self-start flex-shrink h-full p-8 m-40 my-10 space-x-8 space-y-6 bg-clip-content bg-gradient-to-t from-slate-800 via-stone-900 to-slate-900">
 				<img
 					src={props.film.image}
-                        className="object-cover w-full aspect-video h-1/2 rounded-t-md"
+					className="object-cover w-full aspect-video h-1/2 rounded-t-md"
 				/>
 				<div className="inline-flex">
 					<button className="absolute flex gap-2 p-2 text-black uppercase transition ease-in-out bg-white border-2 border-black rounded-md shadow-lg transform-all active:scale-95 delay-50 top-96">
@@ -133,25 +134,25 @@ export default function Movie(props) {
 						</div>
 					</div>
 				</div>
-				<TabsLgBasicFullWidth serielist={props.series} isAmovie={props.film.isaserie}/>
+				<TabsLgBasicFullWidth serielist={props.series} isAmovie={props.film.isaserie} />
 			</div>
-        </div>
+		</div>
 	)
 }
 {
 	/* {showEditFoodModal ? (
-        <EditFood food={food} closeModal={() => setShowEditFoodModal(false)} />
-    ) : null} */
+		<EditFood food={food} closeModal={() => setShowEditFoodModal(false)} />
+	) : null} */
 }
 
 export async function getServerSideProps(context) {
 	const { id } = context.params
- 	const onemovie = await prisma.movie.findUnique({
+	const onemovie = await prisma.movie.findUnique({
 		where: { id: parseInt(id) },
 	})
 
 	const serielist = await prisma.serie.findMany({
-		where: {parentId: parseInt(id)}
+		where: { parentId: parseInt(id) }
 	})
 
 

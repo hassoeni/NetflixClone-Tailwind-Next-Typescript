@@ -7,7 +7,7 @@
 7. add the netflix collapsable sidenav bar 
 8. fetch multiple data but for category only // done 
 9. on season select filter result // done 
-10. if data = movie dont show tabs with season data. 
+10. if data = movie dont show tabs with season data.  // done
 4. make a login and sign up user setup. 
 11. add functionality if user likes of adds movie to watchlist it gets added somewhere
 12. upgrade  functionality so that a user can add it to a backend

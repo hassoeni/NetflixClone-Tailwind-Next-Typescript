@@ -1,12 +1,10 @@
-import Head from 'next/head'
-import HeaderVideo from '../src/components/Header/HeaderVideo'
-import NavBar from '../src/components/NavBar/NavBar'
+import Head from 'next/head';
 import React, { useState } from 'react';
-import axios from 'axios'
-import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube'
-import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB'
-import prisma from '../lib/prisma'
-import Series from './series';
+import prisma from '../lib/prisma';
+import HeaderVideo from '../src/components/Header/HeaderVideo';
+import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB';
+import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube';
+import NavBar from '../src/components/NavBar/NavBar';
 
 // FETCH only Comedy Movies
 
@@ -24,68 +22,7 @@ export async function getStaticProps() {
 
 
 export default function Home(props) {
-  const [search, setSearch] = useState('')
-  const [video, setVideo] = useState([])
-  const [serieData, setSerieData] = useState([])
-
-// ! Dit werkt bij klikken fetcht hij alle gefilterde data in dit geval comedy nu moet het gelijk zijn aan de serie die je selecteert 
-  const getSerieList = async (e) => {
-    // res.body doorgeven en req.body ontvangen
-    try {
-      const body = {category: 'Fantasy'} // welke data wil je doorgeven maak het specifiek
-      const response = await fetch(`api/seriefeed`, {
-        // waar moet die data heen
-        method: 'POST', // welke methode wil je toepassen
-        headers: { 'Content-Type': 'application/json' }, // welke eigenschappen heeft die data nodig
-        body: JSON.stringify(body), // in welke format moet die data worden opgeslagen
-      })
-      console.log(response)
-      const serielist = await response.json() // data terug ontvangen 
-      setSerieData(serielist) // data vastleggen in een variable
-      console.log('data successfully send ', {serielist})
-      // await Router.push("/p/[id]", `/p/${email}`) // return to main screen 
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-
-
-  // const playVideo = e => {
-  //   e.target.play();
-  //   setVideoStyles({
-  //     transform: "scale(2, 2)",
-  //     marginLeft: "300px"
-  //   });
-  // }
-  // const stopVideo = e => {
-  //   e.target.pause();
-  //   setVideoStyles({
-  //     transform: "scale(1, 1)",
-  //     marginLeft: 0
-  //   });
-  // }
-
-
-
-  // TODO add play and stopVideo to onMouseOver Events. 
-  const KEY = 'AIzaSyCBcL4D-cczyvr3WH8jgrPl5rtVcGhTymQ'
-
-
-  const searchData = async (text) => {
-    setSearch(text)
-    const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
-      params: {
-        part: 'snippet',
-        q: search,
-        maxResults: 15,
-        key: KEY
-      }
-    })
-    setVideo(response.data.items)
-  }
-
-
+  // const [video, setVideo] = useState([])
 
   return (
     <div className="">
@@ -95,23 +32,16 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-gradient-to-t from-black via-slate-900 to-slate-900 text-white scroll-smooth">
-        <NavBar search={searchData} />
+        <NavBar 
+        />
         <HeaderVideo />
-        <HorizontalListYoutube data={video} />
+        {/* <HorizontalListYoutube data={video} /> */}
         <div>
         <HorizontalListDB data={props.movielist} category="Comedy" />
         <HorizontalListDB data={props.movielist} category="Fantasy" />
         <HorizontalListDB data={props.movielist} category="Animation" />
         <HorizontalListDB data={props.movielist} category="Action" />
         </div>
-        <button onClick={getSerieList}>get serielist</button>
-        {serieData.map(singleSerie => {
-          return(
-            <>
-              <div>{singleSerie.episodeTitle}</div>
-            </>
-          )
-        })}
       </div>
     </div>
   )
