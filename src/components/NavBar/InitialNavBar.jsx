@@ -3,6 +3,9 @@ import SolidIcons from "../Icons/SolidIcons";
 import { SearchIcon } from '@heroicons/react/solid'
 import { useSearch, useSearchDispatch } from "../../context/SearchContext";
 import Link from "next/link";
+import ButtonRowContainer from "../Button/ButtonRowContainer";
+import Button from "../Button/Button";
+import Router from "next/router";
 
 
 const someQueryFunction = () => {
@@ -18,8 +21,7 @@ const navigation = [
     { id: 6, name: 'Bladeren door talen', href: '#', current: false },
 ]
 
-
-export default function NavBar(props) {
+export default function InitialNavBar(props) {
     const [show, setShow] = useState(false)
     const dispatch = useSearchDispatch()
     const searchState = useSearch()
@@ -50,20 +52,10 @@ export default function NavBar(props) {
                     src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
                     className="mx-3 sm:mx-10 w-24 pt-1 cursor-pointer" />
             </Link>
-
-            <ul className="sm:flex gap-4 flex-1 hidden">
-                {navigation.map(navitems => (
-                    <li key={navitems.id} className="delay-150 hover:text-slate-600 hover:transition-transform hover:scale-100 cursor-pointer ease-in-out font-semibold"><a href={navitems.href} current={navitems.current}>{navitems.name}</a></li>
-                ))}
-            </ul>
             <div className="flex gap-2 items-center">
-                {(show ? <form onSubmit={(e) => onTermSubmit(e)}><input className="border-lg w-full bg-slate-700 px-2  py-1 text-white border-white border-1" placeholder="search me" name="searchTerm" onChange={handleChange} value={searchState.searchTerm} /></form> : <></>)}
-                <div onClick={showInput} className="">
-                    <SolidIcons icon={"SearchIcon"} />
-                </div>
-                <SolidIcons icon={"BellIcon"} />
-                <SolidIcons icon={"UserIcon"} />
-
+                    <ButtonRowContainer> 
+                    <Button buttonbg={'bg-red-700'} buttonring={'ring-red-500'} wFull={true} rounded={false} text="Sign In" handleClick={() => Router.push('/login')}/>
+                    </ButtonRowContainer>
             </div>
         </nav>
     );

@@ -29,6 +29,7 @@ model Movie {
   specialtype String 
   movielength String
   hasserie Serie[]
+  account User[]
   isaserie Boolean @default(false)
 }
 
@@ -54,3 +55,60 @@ model Serie {
   episodelength String
   parent Movie? @relation(fields: [parentId], references: [id])
 }
+
+model User {
+  id Int @default(autoincrement()) @id 
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  name String
+  email String @unique
+  image String 
+  password String
+  // accounts Account[]
+  watchlist Movie? @relation(fields: [id], references: [id])
+  sessions Session[]
+  @@map(name: "users")
+}
+
+// model Account {
+//   id Int @default(autoincrement()) @id 
+//   userId  Int  @map("user_id")
+//   type  String
+//   provider  String
+//   providerAccountId String  @map("provider_account_id")
+//   refresh_token      String?
+//   access_token       String?
+//   expires_at         Int?
+//   token_type         String?
+//   scope              String?
+//   id_token           String?
+//   session_state      String?
+//   oauth_token_secret String?
+//   oauth_token        String?
+
+//   user User@relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+//   @@map("accounts")
+// }
+
+
+model Session {
+  id Int @default(autoincrement()) @id 
+  sessionToken String   @unique @map("session_token")
+  userId       Int   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token String @unique
+  expires DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+

@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import React, { useState } from 'react';
 import prisma from '../lib/prisma';
+import HeaderImage from '../src/components/Header/HeaderImage';
 import HeaderVideo from '../src/components/Header/HeaderVideo';
 import HorizontalListDB from '../src/components/HorizontalMovieList/HorizontalListDB';
 import HorizontalListYoutube from '../src/components/HorizontalMovieList/HorizontalListYoutube';
+import InitialNavBar from '../src/components/NavBar/InitialNavBar';
 import NavBar from '../src/components/NavBar/NavBar';
 
 // FETCH only Comedy Movies
@@ -21,8 +23,7 @@ export async function getStaticProps() {
 }
 
 
-export default function Home(props) {
-  // const [video, setVideo] = useState([])
+export default function unprotectedRoute(props) {
 
   return (
     <div className="">
@@ -32,17 +33,11 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-gradient-to-t from-black via-slate-900 to-slate-900 text-white scroll-smooth">
-        <NavBar 
-        />
-        <HeaderVideo />
-        {/* <HorizontalListYoutube data={video} /> */}
-        <div>
-        <HorizontalListDB data={props.movielist} category="Comedy" />
-        <HorizontalListDB data={props.movielist} category="Fantasy" />
-        <HorizontalListDB data={props.movielist} category="Animation" />
-        <HorizontalListDB data={props.movielist} category="Action" />
+        <InitialNavBar /> 
+        <div className="h-screen w-screen">
+          <HeaderImage/>
         </div>
-      </div>
+        </div>
     </div>
   )
 }
