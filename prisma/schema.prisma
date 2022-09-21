@@ -29,7 +29,6 @@ model Movie {
   specialtype String 
   movielength String
   hasserie Serie[]
-  account User[]
   isaserie Boolean @default(false)
 }
 
@@ -57,17 +56,11 @@ model Serie {
 }
 
 model User {
-  id Int @default(autoincrement()) @id 
+  id        String     @default(cuid()) @id
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  name String
   email String @unique
-  image String 
-  password String
-  // accounts Account[]
-  watchlist Movie? @relation(fields: [id], references: [id])
-  sessions Session[]
-  @@map(name: "users")
+  password String 
 }
 
 // model Account {
@@ -93,15 +86,15 @@ model User {
 // }
 
 
-model Session {
-  id Int @default(autoincrement()) @id 
-  sessionToken String   @unique @map("session_token")
-  userId       Int   @map("user_id")
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+// model Session {
+//   id Int @default(autoincrement()) @id 
+//   sessionToken String   @unique @map("session_token")
+//   userId       Int   @map("user_id")
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("sessions")
-}
+//   @@map("sessions")
+// }
 
 model VerificationToken {
   identifier String

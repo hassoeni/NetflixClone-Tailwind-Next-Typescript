@@ -5,10 +5,8 @@ import { useReducer, createContext, useContext } from "react"; // import react h
 const InputContext = createContext(null) // define a context object
 const InputDispatchContext = createContext(null)  // define a dispatch context object
 
-const initialState = {
-    email: '',
-    password: ''
-}
+const initialState = [{email: '', password: ''}]
+
 
 export function InputProvider({ children }) {
     const [inputState, dispatch] = useReducer(inputReducer, initialState)
@@ -31,16 +29,23 @@ export function useInputDispatch() {
 }
 
 
-const inputReducer = (inputState, action) => {
+const inputReducer = (state, action) => {
     switch (action.type) {
-        case 'changed': {
+        case 'Handle_Input': {
             return {
-                ...inputState,
-                email: action.payload,
-                password: action.payload
+                ...state,
+                [action.field]: action.payload
             }
         }
+        case 'added': {
+            return [
+                ...state, 
+                {
+                    [action.field]: action.payload
+                }
+            ]
+        }
         default:
-            return inputState
+            return state
     }
 }

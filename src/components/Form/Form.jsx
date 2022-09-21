@@ -9,7 +9,6 @@ const propTypes = {
     placeholder: PropTypes.string,
     onChange: PropTypes.func,
     handleSubmit: PropTypes.func,
-    value: PropTypes.obj
 };
 
 const defaultProps = {};
