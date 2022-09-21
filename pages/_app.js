@@ -1,3 +1,4 @@
+import { InputProvider } from '../src/context/inputContext'
 import { SearchProvider } from '../src/context/SearchContext'
 import '../styles/globals.css'
 
@@ -5,9 +6,11 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SearchProvider>
+    <InputProvider>
+      <SearchProvider>
         <Component {...pageProps} />
-    </SearchProvider>
+      </SearchProvider>
+    </InputProvider>
   )
 }
 

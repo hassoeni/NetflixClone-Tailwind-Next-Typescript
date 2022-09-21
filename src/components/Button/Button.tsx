@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { MouseEventHandler } from 'react';
 
-const propTypes = {
-    buttonbg: PropTypes.string,
-    buttonring: PropTypes.string,
-    handleClick: PropTypes.func,
-    text: PropTypes.string,
-    primary: PropTypes.bool,
-    rounded: PropTypes.bool,
-    wFull: PropTypes.bool  
+// const propTypes = {
+//     buttonbg: PropTypes.string,
+//     buttonring: PropTypes.string,
+//     handleClick: PropTypes.func,
+//     text: PropTypes.string,
+//     primary: PropTypes.bool,
+//     rounded: PropTypes.bool,
+//     wFull: PropTypes.bool  
 
-};
+// };
 
 const defaultProps = {
     buttonbg: '',
@@ -22,9 +23,21 @@ const defaultProps = {
     wFull: false,  
 
 };
+type Props = {
+    buttonbg: string, 
+    buttonring: string, 
+    handleClick: MouseEventHandler,
+    text: string, 
+    primary:  boolean, 
+    rounded: boolean, 
+    wFull: boolean,
+    textcolor: string, 
+
+}
 
 
-function Button({text, handleClick, buttonring, buttonbg, textcolor, wFull, rounded}){
+
+function Button({text, handleClick, buttonring, buttonbg, textcolor, wFull, rounded}: Props){
 
     const defaultbuttonclass = `transition transform-all active:scale-95 delay-50 ease-in-out m-3.5 
     py-0.5 sm:p-2 px-2 w-full sm:${wFull ? "w-full" : "w-60"} flex-wrap flex-shrink font-semibold text-sm sm:text-md ${textcolor} uppercase ${buttonbg}  
@@ -39,7 +52,7 @@ function Button({text, handleClick, buttonring, buttonbg, textcolor, wFull, roun
     )
 }
 
-Button.propTypes = propTypes;
+// Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
 

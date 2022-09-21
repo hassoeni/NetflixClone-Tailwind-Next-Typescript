@@ -1,15 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { Node } from 'typescript';
+import { ReactNode } from 'react';
 
 const propTypes = {
     children: PropTypes.node,
 };
 
+type Props = {
+    children: ReactNode
+}
+
 const defaultProps = {};
 
 
 
-function ButtonRowContainer({ children }) {
+function ButtonRowContainer({ children }: Props) {
     return (
         <div className="flex gap-10">
             {children}
