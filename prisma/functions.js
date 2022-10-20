@@ -129,7 +129,7 @@ const getFilteredMovieList = async (e) => {
 
 
 	// youtube api 
-	const KEY = 'AIzaSyCBcL4D-cczyvr3WH8jgrPl5rtVcGhTymQ'
+	const KEY = 'MYKEY'
 
 
 	const searchData = async (text) => {
