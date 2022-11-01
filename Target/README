@@ -1,3 +1,5 @@
+// Small Roadmap for implementing code
+
 1. Step one Build UI  for netflix //done 
 2. Step two set up mock backend it should contain a table that has videos per category in it use prisma for backend setup // done 
 2a. backend should contain id, category, movie title, movie description, created at, updated at, movie description, movie url, watched(true or false), liked (true or false), its a relational table so user id should be linked  // done 
