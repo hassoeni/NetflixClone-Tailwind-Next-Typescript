@@ -8,7 +8,7 @@ const propTypes = {
 };
 
 type Props = {
-    children: ReactNode
+    children?: React.ReactNode
 }
 
 const defaultProps = {};

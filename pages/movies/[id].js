@@ -11,6 +11,7 @@ import OutlinedIcons from '../../src/components/Icons/OutlinedIcons'
 import TabsLgBasicFullWidth from '../../src/components/ActiveTabs/ActiveTab'
 // const prisma = new PrismaClient()
 import prisma from '../../lib/prisma'
+import ReactPlayer from 'react-player'
 
 export default function Movie(props) {
 	console.log(props.film)

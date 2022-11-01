@@ -7,9 +7,6 @@ export default function SearchBar(props) {
     const searchState = useSearch()
 
 
-
-    // const [text, setText] = useState('') //old
-
     const onTermSubmit = (e) => {
         e.preventDefault()
         props.search(searchState.searchTerm)
@@ -20,10 +17,9 @@ export default function SearchBar(props) {
         <form onSubmit={(e) => onTermSubmit(e)}>
             <input
                 placeholder="Search"
-                className="placeholder-black text-black"
+                className="text-black placeholder-black"
                 type="text"
                 value={searchState.searchTerm}
-                //   onChange={(e) => setText(e.target.value)} old 
                 onChange={(e) => dispatch({
                     type: 'searched',
                     field: e.target.name,
